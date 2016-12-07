@@ -1,0 +1,38 @@
+Highway to Hell,AC/DC,Classic Rock N'Roll,0.35,0.95,poignant
+Hotel California,The Eagles,Classic Rock N'Roll,0.625,0.55,hypnotic
+Stairway to Heaven,Led Zeppelin,Classic Rock N'Roll,0.25,0.42,intimate
+My Generation,The Who,Classic Rock N'Roll,0.46,0.845,groovy
+All Along the Watchtower,Jimi Hendrix,Classic Rock N'Roll,0.8,0.84,lively
+Rock and Roll All Nite,Kiss,Classic Rock N'Roll,0.66,0.875,funky
+Smells Like Teen Spirit,Nirvana,Classic Rock N'Roll,0.5,0.98,energetic
+Purple Rain,Prince,Classic Rock N'Roll,2,2,none
+Jailhouse Rock,Elvis Presley ,Classic Rock N'Roll,0.26,0.88,angry
+Beast of Burden,The Rolling Stones,Classic Rock N'Roll,0.525,0.89,warm
+Billie Jean,Michael Jackson,Pop,0.55,0.2,dreamy
+Yeah,Usher,Pop,0.55,0.82,spiritual
+Hollaback Girl,Gwen Stefani,Pop,0.55,0.82,spiritual
+Like a Prayer,Madonna,Pop,0.26,0.88,angry
+...Baby One More Time ,Britney Spears,Pop,0.85,0.8,whimsical
+It's Gonna Be Me,*NSYNC,Pop,0.9,0.825,bouncy
+Everybody,Backstreet Boys,Pop,0.66,0.875,funky
+Don't Stop Believing,Journey,Pop,0.87,0.41,futuristic
+Genie in a Bottle,Christina Aguilera,Pop,0.875,0.67,elegant
+Call Me Maybe,Carly Rae Jepsen,Pop,0.56,0.275,carefree
+Iron Man,Black Sabbath,Heavy Metal,0.33,0.73,rebellious
+Enter Sandman,Metallica,Heavy Metal,0.45,0.925,intense
+Welcome to the Jungle,Guns N' Roses,Heavy Metal,0.26,0.88,angry
+Angel of Death,Slayer,Heavy Metal,0.26,0.88,angry
+Blackout,Scorpions,Heavy Metal,0.66,0.875,funky
+Mind Over Metal,Raven,Heavy Metal,0.525,0.89,warm
+Under the Blade,Twisted Sister,Heavy Metal,0.55,0.82,spiritual
+Screaming for Vengeance,Judas Priest,Heavy Metal,0.35,0.95,poignant
+At War With Satan,Venom,Heavy Metal,0.3,0.63,manic
+The Number of the Beast,Iron Maiden,Heavy Metal,0.35,0.95,poignant
+Thrift Shop,Macklemore,Rap,2,2,none
+Hot Boyz,Missy Elliott,Rap,0.9,0.825,bouncy
+Big Poppa,The Notorious B.I.G.,Rap,0.8,0.66,epic
+California Love,2Pac,Rap,0.775,0.876,fun
+Drop It Like It's Hot,Snoop Dogg,Rap,0.625,0.55,hypnotic
+Holy Grail,Jay Z,Rap,0.8,0.84,lively
+Live Your Life - Feat. Rihanna,T.I.,Rap,0.46,0.845,groovy","I like Dem Girlz,Lil Jon,Rap,0.74,0.6,peaceful","In Da Club,50 Cent,Rap,0.8,0.66,epic","Lose Yourself,Eminem,Rap,0.26,0.88,angry","Burnin' It Down,Jason Aldean,Country,0.575,0.76,gleeful","Drink In My Hand,Eric Church,Country,0.5,0.98,energetic","Crash My Party,Luke Bryan,Country,0.725,0.2,reflective","Daddy Sang Bass,Johnny Cash,Country,0.725,0.425,ambient","Live Like You Were Dying,Tim McGraw,Country,0.46,0.845,groovy","Long Stretch of Love,Lady Antebellum,Country,0.87,0.41,futuristic","Me and My Gang,Rascal Flatts,Country,0.8,0.84,lively","Toes,Zac Brown Band,Country,0.74,0.6,peaceful","Cruise,Florida Georgia Line,Country,0.73,0.925,enthusiastic","Amazed,Lonestar,Country,0.355,0.55,passionate","Take Five,Dave Brubeck,Jazz,0.551,0.352,cool","Whiplash,Don Ellis,Jazz,2,2,none","Caravan,Duke Ellington,Jazz,0.04,0.04,dark","Upswinging,Tim Simonec,Jazz,2,2,none","My Favorite Things,John Coltrane,Jazz,0.775,0.3,gentle","So What,Miles Davis,Jazz,0.42,0.335,pastoral","St. Thomas,Sonny Rollins,Jazz,0.875,0.67,elegant","Straight, No Chaser,Thelonious Monk,Jazz,0.77,0.51,insdustrial","Django,The Modern Jazz Quartet,Jazz,0.31,0.36,mellow","Struttin' With Some Barbeque,Louis Armstrong,Jazz,0.91,0.46,sophisticated","Symphony No. 5 in c minor, op. 67: I. Allegro con brio,Ludwig van Beethoven,Classical,0.32,0.2,ominous","1812 Overture, op. 49,pyotr ilyich Tchaikovsky,Classical,0.15,0.25,melancholia","Mozart: serenade no. 13 in G major, K. 525, \"Eine Kleine Nachtmusik\": II. Romanze (Andante),Wolfgang amadeus Mozart,Classical,2,2,none","Toccata and Fugue in D Minor BWV. 565: Toccata,Johann sebastian Bach,Classical,0.15,0.25,melancholia","William Tell Overture,Gioachino Rossini,Classical,0.14,0.145,eerie","Canon in D major,johann Pachelbel,Classical,0.24,0.06,angst-ridden","The Blue Danube,Johann Strauss II,Classical,0.15,0.22,haunting","ORFF: Carmina Burana: Introduction, fortuna imperatrix mundi, no. 1 \"0 Fortuna\" (Chorus),Carl Orff,Classical,2,2,none","Can - can from Orpheus In The Underworld,jacques Offenbach,Classical,0.44,0.645,rowdy","Messiah - Part 2: \"Hallelujah\",George Frideric Handel,Classical,0.56,0.275,carefree","(Sittin' On) The Dock of the Bay,Otis Redding,Soul,0.55,0.2,dreamy","Stand By Me,Ben E. King,Soul,0.35,0.47,romantic","A Change is Gonna Come,Sam Cooke,Soul,0.94,0.555,joyous","At Last,Etta James,Soul,0.31,0.36,mellow","Let's Stay Together,Al Green,Soul,0.91,0.46,sophisticated","Papa's Got a Brand New Bag,James Brown,Soul,0.66,0.875,funky","Georgia On My Mind,Ray Charles ,Soul,0.16,0.31,mistical","Let's Get It On,Marvin Gaye,Soul,0.62,0.64,light","Respect,Aretha Franklin,Soul,0.87,0.41,futuristic","Signed, Sealed, Delivered,Stevie Wonder,Soul,0.85,0.62,playful","Wonderwall,Oasis,Alternative Rock,0.45,0.925,intense","Boulevard of Broken Dreams,Green Day,Alternative Rock,0.35,0.95,poignant","Numb,Linkin Park,Alternative Rock,0.325,0.825,disturbing","Seven Nation Army,The White Stripes,Alternative Rock,0.35,0.47,romantic","Dani California,Red Hot Chili Peppers,Alternative Rock,0.45,0.925,intense","HeavyDirtySoul,Twenty One Pilots,Alternative Rock,0.365,0.85,aggressive","Semi - Charmed Life,Third Eye Blind,Alternative Rock,0.775,0.876,fun","Bitter Sweet Symphony,The Verve,Alternative Rock,0.775,0.876,fun","Island In The Sun,Weezer,Alternative Rock,0.52,0.1,cold","Doin' Time,Sublime,Alternative Rock,0.66,0.875,funky","Ghosts N Stuff,Deadmau5,Techno/Electronic,0.325,0.825,disturbing","Call On Me,Eric Prydz,Techno/Electronic,0.74,0.78,humorous","Around the World,Daft Punk,Techno/Electronic,0.625,0.55,hypnotic","Scream and Shout,Will.i.am,Techno/Electronic,0.44,0.645,rowdy","Don't you Worry Child,Swedish House Mafia,Techno/Electronic,0.365,0.85,aggressive","Under Control,Calvin Harris,Techno/Electronic,0.33,0.73,rebellious","Titanium (feat. Sia),David Guetta,Techno/Electronic,0.25,0.42,intimate","Let The Music Play,Shannon,Techno/Electronic,0.8,0.84,lively","Everytime We Touch,Cascada,Techno/Electronic,0.45,0.925,intense
+Levels,Avicii,Techno/Electronic,0.31,0.36,mellow

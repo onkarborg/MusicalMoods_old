@@ -1,0 +1,155 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>d3 x3dom demo</title>
+
+    <script type="text/javascript" src="http://www.x3dom.org/download/x3dom.js"> </script>
+    <link rel="stylesheet" type="text/css" href="http://www.x3dom.org/download/x3dom.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<audio class="" id="r0audio" class="audioDemo" controls >
+    <source src="1.mp3" type="audio/mpeg">
+    <source src="2.mp3" type="audio/mpeg">
+    <source src="3.mp3" type="audio/mpeg">
+    <source src="4.mp3" type="audio/mpeg">
+    <source src="5.mp3" type="audio/mpeg">
+</audio>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    var yScale = d3.scale.linear()
+            .domain([0,255])
+            .range([0,20]);
+    var colorScale = d3.scale.linear()
+            .domain([0,255])
+            .range([0,1]);
+    x3d = d3.select("body")
+            .append("x3d")
+            .attr( "height", "600px" )
+            .attr( "width", "1000px" )
+    ;
+    var scene = x3d.append("scene");
+    scene.append("viewpoint")
+            .attr( "centerOfRotation", "3.75 0 10")
+            .attr( "position", "28.742265188709691 -30.453522975182366 16.816062840792625" )
+            .attr( "orientation", "0.962043810961999 0.1696342804961945 0.21376603254551874 1.379433089729343" )
+    ;
+
+    function refresh( data ) {
+        shapes = scene.selectAll("transform").data( data );
+        shapesEnter = shapes
+                .enter()
+                .append( "transform" )
+                .append( "shape" )
+        ;
+        // Enter and update
+        shapes
+                .attr("translation", function(d,i) { return i*1.0 + " 0.0 " + yScale(d/2); } )
+                .attr("scale", function(d) { return "0.5 0.5 " + yScale(d); } );
+
+        shapesEnter
+                .append("appearance")
+                .append("material")
+                .attr("diffuseColor", function(d,i){
+                    return (i/32) + " 1 "+ ((32-i)/32);
+                    //return (d/255)+" "+ ((255-d)/255)+ " 1";
+                } );
+
+        shapesEnter.append( "box" )
+                .attr( "size", "1.0 1.0 1.0" );
+    }
+
+    //refresh( randomData() );
+    /*setInterval(
+            function(){
+                refresh( randomData() );
+            },
+            2500);*/
+
+
+    /*-------------------------------------------------------------------- */
+    window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+    var visualmusic = function(renderer){
+
+        var audio, audioStream, analyser, source, audioCtx,canvasCtx, frequencyData, running = false;
+                //renderer = renderer,
+                //width = +$("#main").width(),
+                //height = +$("#main").height();
+
+        var init = function () {
+            audio = $('#r0audio').get(0);
+
+            audioCtx = new AudioContext();
+            analyser = audioCtx.createAnalyser();
+            source = audioCtx.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            analyser.fftSize = 64;
+            frequencyData = new Uint8Array(analyser.frequencyBinCount);
+            //frequencyData = new Float32Array(analyser.frequencyBinCount);
+            console.log("analyser.frequencyBinCount:"+analyser.frequencyBinCount);
+            console.log("frequencyData:"+frequencyData);
+            /*renderer.init({
+                count: analyser.frequencyBinCount,
+                width: width,
+                height: height
+            });*/
+        };
+        this.start = function () {
+            audio.play();
+            running = true;
+            renderFrame();
+        };
+        this.stop = function () {
+            running = false;
+            audio.pause();
+        };
+        this.setRenderer = function(r) {
+            if (!r.isInitialized()) {
+                r.init({
+                    count: analyser.frequencyBinCount,
+                    width: width,
+                    height: height
+                });
+            }
+            renderer = r;
+        };
+        this.isPlaying = function () {
+            return running;
+        };
+        var renderFrame = function () {
+            //analyser.getFloatTimeDomainData(frequencyData);
+
+            //analyser.getFloatFrequencyData(frequencyData);
+
+            analyser.getByteFrequencyData(frequencyData);
+
+            //analyser.getByteTimeDomainData(frequencyData);
+            //renderer.renderFrame(frequencyData);
+            refresh(frequencyData);
+            if (running) {
+                requestAnimationFrame(renderFrame);
+            }
+            else{
+                console.log("not running");
+            }
+        };
+        init();
+
+    };
+    var v;
+    //var currentRenderer = renderers['bar'];
+    $(window).ready(function(){
+
+        v = new visualmusic('l');
+        v.start();
+    });
+</script>
+
+</body>
+</html>
