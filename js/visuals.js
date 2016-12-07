@@ -486,7 +486,7 @@ var visualmusic = function(renderer){
         audio = $('#r0audio').get(0);
 
         audioCtx = new AudioContext();
-        alert(audioCtx.sampleRate);
+        //alert(audioCtx.sampleRate);
         analyser = audioCtx.createAnalyser();
         source = audioCtx.createMediaElementSource(audio);
         source.connect(analyser);
@@ -494,8 +494,8 @@ var visualmusic = function(renderer){
         analyser.fftSize = 2048;
         //frequencyData = new Uint8Array(analyser.frequencyBinCount);
         frequencyData = new Float32Array(analyser.frequencyBinCount);
-        console.log("analyser.frequencyBinCount:"+analyser.frequencyBinCount);
-        console.log("frequencyData:"+frequencyData);
+        //console.log("analyser.frequencyBinCount:"+analyser.frequencyBinCount);
+        //console.log("frequencyData:"+frequencyData);
         renderer.init({
             count: analyser.frequencyBinCount,
             width: width,
@@ -547,11 +547,11 @@ var visualmusic = function(renderer){
 var v;
 var currentRenderer = renderers['dots'];
 $(window).ready(function(){
-    $("#main").width(window.innerWidth-10);
-    $("#main").height(window.innerHeight-60) ;
+    //$("#main").width(window.innerWidth-10);
+    //$("#main").height(window.innerHeight-60) ;
 
-    v = new visualmusic(currentRenderer);
-    v.start();
+    //v = new visualmusic(currentRenderer);
+    //v.start();
 });
 /*$('#r0audio').click(function() {
     /*if (this.paused == false) {
@@ -567,7 +567,7 @@ $(window).ready(function(){
 $("#r0audio").on("pause",function(){
     v.stop();
 });
-var f = 1;
+var f = 0;
 $("#playbutton").click(function(){
     if(f==1){
         v.stop();
