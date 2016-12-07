@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
 
     <style>
-        
+        body {
+            padding: 20px;
+        }
         .radar-chart .area {
             fill-opacity: 0.7;
         }
@@ -26,39 +28,6 @@
             fill: #ADD8E6;
             stroke: none;
         }
-
-    .wrapper {
-    position: relative;
-}
-.wrapper {
-    width: 960px;
-    margin: 0 auto;
-}
-.navbar li a {
-    padding: 20px 10px 15px 10px;
-    font-size: 18px;
-    display: block;
-    color: #337ab7;
-}
-.pull-left {
-    float: left!important;
-}
-h1 {
-    font-size: 23px;
-    color: #000;
-}
-.pull-right {
-    float: right!important;
-}
-.navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-.navbar li {
-    display: inline-block;
-}
     </style>
     <style>
         .chart {
@@ -86,26 +55,9 @@ h1 {
     </style>
 </head>
 <body >
-
-<div class="container">
-        <div class="wrapper">
-
-                <div class="row" style="border-bottom: 1px solid #999; margin-bottom: 20px">
-                    <h1 class="pull-left">H590 Interactive Visual Analytics</h1>
-                    <nav class="navbar pull-right" style="margin-bottom: 0">
-                        <ul>
-                            <li><a href="index.html">Music & Moods</a></li>
-                            <li><a href="documentation.html">Documentation</a></li>
-                           
-                        </ul>
-                    </nav>
-               
-                </div>
-
-                <div class="content">
-                        <div>
-            <button id="go">Go!</button>
-        </div>
+<div>
+<button id="go">Go!</button>
+</div>
 <div id="mainbody" class="hidden">
     <svg id="test1" width="700" height="600"></svg>
     <svg id="test2" width="650" height="400"></svg>
@@ -474,13 +426,5 @@ h1 {
                 .text(function(d) { return d;})
     });
 </script>-->
-                </div>
-
-        </div>
-        
-            
-       
-
-        
 </body>
 </html>
