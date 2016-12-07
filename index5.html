@@ -5,17 +5,253 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>songs</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .chart {
 
+        }
+
+        .main text {
+            font: 10px sans-serif;
+        }
+
+        .axis line, .axis path {
+            shape-rendering: crispEdges;
+            stroke: black;
+            fill: none;
+        }
+
+        circle {
+            fill: steelblue;
+        }
+
+    </style>
 </head>
 <body >
-<svg id="main" width="600" height="600">
+<input type="text" id="search">
+<button id="go">Go!</button>
+<ul id="listofsongs">
 
-</svg>
+</ul>
+<svg id="test1" width="600" height="600"></svg>
+
+
 <script src="js/PapaParse-4.1.2/papaparse.min.js"></script>
-<script src="js/d3.v3.min.js"></script>
+<link href="js\nvd3\build/nv.d3.css" rel="stylesheet" type="text/css">
+<script src="js\nvd3\build/d3.v3.min.js" charset="utf-8"></script>
+<script src="js\nvd3\build/nv.d3.js"></script>
 <script src="js/jquery-3.1.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+    var accessToken = "BQAhPJ5uPgwYoFYprzuG-Yct100b5RFwR86IOtpXV7yoRzwLfgiMJmogyL563IpN7vk2lXdK-Jm1MB8tx3SZK7eZLI84NI9oNt4zZiiK6BCOrXS7HJ9Fi9y9g0Xj4vcKDULW5YqeuYl-bt6GMhJ2LjN9P_TkstELTao-2a4Zgtaffwc";
+    $("#search").on('input',function(){
+        if($("#search").val().length > 4){
+            $("#go").click();
+        }
+    });
+    $("#go").click(function(){
+        var s = encodeURI($("#search").val());
+
+        $.ajax({
+            url: 'https://api.spotify.com/v1/search?type=track&limit=5&q=' + s,
+            type: 'GET',
+            headers: {
+                'Authorization': 'Authorization: Bearer ' + accessToken
+            },
+            success: function (data1) {
+                var s = "";
+                data1.tracks.items.forEach(function(elem){
+                    s = s + '<li><button class="btn" onclick="get_track_by_name('+elem.id+')"><strong>'+elem.name+'</strong> - '+elem.album.name + '</button></li>';
+                });
+
+                $("#listofsongs").get(0).innerHTML= s;
+            }
+        });
+    });
+    var get_track_by_name = function(trackID){
+    $.ajax({
+        url: 'https://api.spotify.com/v1/audio-features?ids=' + trackID,
+        type: 'GET',
+        headers: {
+            'Authorization': 'Authorization: Bearer ' + trackID
+        },
+        success: function (data2) {
+            console.log(data2);
+        }
+    });
+};
+
+
+    $("#go").click(function(){
+        var i = 0;
+        var data;
+        var finalData=[];
+        var tobesent=[];
+        Papa.parse('songs.csv', {
+
+            download: true,
+            header: true,
+            dynamicTyping: true,
+            complete: function(dataBig){
+                data = dataBig.data;
+                console.log(dataBig.data);
+                get_data(0);
+            }
+        });
+        var get_data_new = function(i){
+            Papa.parse('myDir/1.csv', {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function(data1){
+                    console.log(data1);
+
+                }
+            });
+        };
+        var get_data = function(i){
+            var s = encodeURI(data[i].Song +" "+data[i].Artist);
+            $.ajax({
+                url: 'https://api.spotify.com/v1/search?type=track&limit=1&q='+s,
+                type: 'GET',
+                headers: {
+                    'Authorization' : 'Authorization: Bearer '+accessToken
+                },
+                success: function(data1) {
+                    //console.log(data);
+                    //console.log(data.tracks.items[0].id);
+                    finalData.push({
+                        key: 'Group 1',
+                        values: []
+                    });
+                    console.log(data1);
+                    $.ajax({
+                        url: 'https://api.spotify.com/v1/audio-features?ids='+data1.tracks.items[0].id,
+                        type: 'GET',
+                        headers: {
+                            'Authorization' : 'Authorization: Bearer '+accessToken
+                        },
+                        success: function(data2) {
+                            console.log(i);
+                            finalData[0].values.push({
+                                song:data1.tracks.items[0].name,
+                                artist:data1.tracks.items[0].artists[0].name,
+                                x: data2.audio_features[0].valence,
+                                y: data2.audio_features[0].energy
+                            });
+                            tobesent.push(
+                                JSON.stringify([data1.tracks.items[0].name,data1.tracks.items[0].artists[0].name,data2.audio_features[0].valence,data2.audio_features[0].energy])
+                            );
+                            //console.log("song:"+data[i].Song +" artist"+data[i].Artist+" v:"+data.audio_features[0].valence+" e:"+data.audio_features[0].energy);
+                            if(i<97)
+                                get_data(i+1);
+                            else{
+/*                                nv.addGraph(function() {
+
+                                    var chart = nv.models.scatter()
+                                            .margin({top: 20, right: 20, bottom: 20, left: 20})
+                                            .pointSize(function(d) { return d.z })
+                                            .useVoronoi(true);
+
+                                    chart.dispatch.on('renderEnd', function(){
+                                        console.log('render complete');
+                                    });
+
+                                    d3.select('#test1')
+                                            .datum(finalData)
+                                            .transition().duration(500)
+                                            .call(chart);
+
+                                    nv.utils.windowResize(chart.update);
+                                    return chart;
+                                });
+*/
+                                var margin = {top: 20, right: 15, bottom: 60, left: 60}
+                                        , width = 960 - margin.left - margin.right
+                                        , height = 500 - margin.top - margin.bottom;
+
+                                var x = d3.scale.linear()
+                                        .domain([0, d3.max(data, function(d) { return d[0]; })])
+                                        .range([ 0, width ]);
+
+                                var y = d3.scale.linear()
+                                        .domain([0, d3.max(data, function(d) { return d[1]; })])
+                                        .range([ height, 0 ]);
+
+                                var chart = d3.select('svg')
+                                        .attr('width', width + margin.right + margin.left)
+                                        .attr('height', height + margin.top + margin.bottom)
+                                        .attr('class', 'chart')
+
+                                var main = chart.append('g')
+                                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+                                        .attr('width', width)
+                                        .attr('height', height)
+                                        .attr('class', 'main')
+
+                                // draw the x axis
+                                var xAxis = d3.svg.axis()
+                                        .scale(x)
+                                        .orient('bottom');
+                                var tooltip = d3.select("body").append("div")
+                                        .attr("class", "tooltip")
+                                        .style("opacity", 0);
+                                main.append('g')
+                                        .attr('transform', 'translate(0,' + height + ')')
+                                        .attr('class', 'main axis date')
+                                        .call(xAxis);
+
+                                // draw the y axis
+                                var yAxis = d3.svg.axis()
+                                        .scale(y)
+                                        .orient('left');
+
+                                main.append('g')
+                                        .attr('transform', 'translate(0,0)')
+                                        .attr('class', 'main axis date')
+                                        .call(yAxis);
+
+                                var g = main.append("svg:g");
+
+                                g.selectAll("scatter-dots")
+                                        .data(finalData[0].values)
+                                        .enter().append("svg:circle")
+                                        .attr("cx", function (d,i) { return x(d.x); } )
+                                        .attr("cy", function (d) { return y(d.y); } )
+                                        .attr("r", 8)
+                                        .on("mouseover", function(d) {
+                                            tooltip.transition()
+                                                    .duration(200)
+                                                    .style("opacity", .9);
+                                            tooltip.html(d.song + "<br/> (" + d.artist + ")")
+                                                    .style("left", (d3.event.pageX + 5) + "px")
+                                                    .style("top", (d3.event.pageY - 28) + "px");
+                                        })
+                                        .on("mouseout", function(d) {
+                                            tooltip.transition()
+                                                    .duration(500)
+                                                    .style("opacity", 0);
+                                        });
+
+                                $.ajax({
+                                    url: "collect.php",
+                                    type: "POST",
+                                    contentType: "application/x-www-form-urlencoded",
+                                    data: {"json_string": tobesent},
+                                    success:function(){
+                                        console.log("done");
+                                    }
+                                });
+
+
+                            }
+                        }
+                    });
+                }
+            });
+        };
+    });
+</script>
+<!--<script>
     var i = 0;
     var data;
     var finalData=[];
@@ -66,7 +302,7 @@
             }
         });
     }
-</script>
+</script>-->
 <!--<script>
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
             width = 960 - margin.left - margin.right,
